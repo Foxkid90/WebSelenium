@@ -43,10 +43,11 @@ public class CallbackMyVTest {
         form.findElement(By.cssSelector("span[data-test-id=phone] input[value]")).sendKeys("+79170001922");
         form.findElement(By.cssSelector("label[data-test-id=agreement] span[class=checkbox__box]")).click();
         form.findElement(By.cssSelector("button[type=button]")).click();
-        // Из за наличия задержки возникновения отчётного сообщения, использование cssSelector приводит к падению теста.
+        // Из-за наличия задержки возникновения отчётного сообщения, использование cssSelector приводит к падению теста.
         // В связи с этим принято решение использовать className: "paragraph".
         //WebElement message = driver.findElement(By.cssSelector("[data-test-id=order-success]"));
         WebElement message = driver.findElement(By.className("paragraph"));
+        assertTrue(message.isDisplayed());
         assertEquals("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.", message.getText().trim());
 
     }
